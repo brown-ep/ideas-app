@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react'
 import {
   View,
   Text,
@@ -6,14 +6,13 @@ import {
   TouchableOpacity,
   Button,
   StyleSheet
-} from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
 
 import IconButton, { Icons } from '../../IconButton/IconButton'
 
-
-export const IdeaCell = ({ idea }) => (
-  <TouchableOpacity style={styles.cell}>
+export const IdeaCell = ({ idea, handlePress }) => (
+  <TouchableOpacity style={styles.cell} onPress={handlePress}>
     <View style={styles.profileArea}>
       <Image
         style={styles.image}
@@ -27,28 +26,40 @@ export const IdeaCell = ({ idea }) => (
       <Text style={[styles.text, styles.title]}>{idea.title}</Text>
       <Text style={[styles.text, styles.description]}>{idea.description}</Text>
       <View style={styles.icons}>
-        <IconButton style={styles.icon} icon={Icons.heart} toggle={true} onChange={console.log} />
-        <IconButton style={styles.icon} icon={Icons.comment} toggle={true} onChange={console.log} />
+        <IconButton
+          style={styles.iconButton}
+          icon={Icons.heart}
+          toggle={true}
+          fontSize={22}
+          onChange={console.log}
+        />
+        <IconButton
+          style={styles.iconButton}
+          icon={Icons.comment}
+          toggle={false}
+          fontSize={22}
+          onChange={console.log}
+        />
       </View>
     </View>
     <View style={styles.indicator}>
       <TouchableOpacity>
-        <FontAwesome style={styles.icon} name="chevron-right" />
+        <FontAwesome name="chevron-right" />
       </TouchableOpacity>
     </View>
   </TouchableOpacity>
-);
+)
 
 const styles = StyleSheet.create({
   cell: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
-    width: "100%"
+    width: '100%'
   },
   text: {
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
     flex: 1
   },
   image: {
@@ -57,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   content: {
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
     flex: 1,
     paddingLeft: 10,
     paddingRight: 10,
@@ -65,26 +76,27 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 12,
-    fontWeight: "800",
-    color: "rgba(0,0,0,.4)"
+    fontWeight: '800',
+    color: 'rgba(0,0,0,.4)'
   },
   title: {
     fontSize: 18,
-    fontWeight: "bold"
+    fontWeight: 'bold'
   },
   icons: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 10,
-    borderColor: 'red',
-    borderWidth: 1
+    // borderColor: 'red',
+    flexDirection: 'row'
+    // borderWidth: 1
   },
-  icon: {
-    paddingRight: 10
+  iconButton: {
+    marginRight: 20
   },
   indicator: {
     opacity: 0.6,
-    alignSelf: "center"
+    alignSelf: 'center'
   }
-});
+})
 
-export default IdeaCell;
+export default IdeaCell
